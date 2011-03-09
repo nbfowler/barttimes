@@ -45,6 +45,7 @@ module Bart
       { :id => "ssan", :name => "South San Francisco" },
       { :id => "ucty", :name => "Union City" },
       { :id => "wcrk", :name => "Walnut Creek" },
+      { :id => "wdub", :name => "West Dublin/Pleasanton" },
       { :id => "woak", :name => "West Oakland" }
     ]
 

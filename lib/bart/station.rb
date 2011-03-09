@@ -3,6 +3,7 @@
 
 require 'nokogiri'
 require 'bart/etd'
+#  require 'etd'
 require 'bart/station/list'
 
 # CLEANUP
@@ -67,6 +68,18 @@ module Bart
       @departures = document.css('etd').inject([]) do |memo, i|
         memo << Etd.new(i.to_s)
       end
+    end
+
+    def load_stninfo
+      params = {
+        :cmd => 'stninfo',
+        :orig => @abbr,
+        :key => 'MW9S-E7SL-26DU-VV8V',
+      }
+
+      query_string = '?' + params.map { |key, value| [key, value] * '=' } * '&'
+      ssan_etd = Net::HTTP::Get.new('/api/stninfo.aspx' + query_string )
+      
     end
 
   end

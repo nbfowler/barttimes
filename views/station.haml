@@ -1,0 +1,21 @@
+!!! 5
+%head
+  %title BART Times
+
+%body
+  %h1
+    = @station.name
+  %ul
+  - @station.load_departures
+  - unless @station.departures.empty?
+    - @station.departures.map do |d|
+      %li 
+        = d.destination.name
+        %span{ :style => 'margin-left:100px;' } 
+        - d.estimates.map do |e|
+          = e.minutes 
+  - else 
+    %p No current prediction
+
+  %h4
+    %a{ :href => '/' } Home

@@ -1,0 +1,12 @@
+!!! 5
+%head
+  %title BART Times
+
+%body
+  %h1 Check out these BART stations!!
+  %ul
+  - Bart::Station::LIST.each do |station_hash|
+    %li
+      %a{:href => "/station/" + station_hash[:id] } 
+        = station_hash[:name]
+
