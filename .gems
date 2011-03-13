@@ -1,2 +1,4 @@
 sinatra
 nokogiri
+haml
+awesome_print
