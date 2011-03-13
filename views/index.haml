@@ -4,8 +4,7 @@
     %a{:"data-rel" => 'dialog', :href => '#about', :"data-transition" => 'slidedown'} About
   %div{:"data-role" => 'content'}
     %ul{ :"data-role" => 'listview', :"data-theme" => 'e' }
-      -#  - Bart::Station::LIST.each do |station_hash|
-      - @station_list.each do |station_hash|
+      - Bart::Station::LIST.each do |station_hash|
         %li
           %a{:href => "/station/" + station_hash[:id] } 
             = station_hash[:name]

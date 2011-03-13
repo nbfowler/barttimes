@@ -5,7 +5,6 @@ require 'sinatra'
 require 'awesome_print'
 
 get '/' do
-  #  @station_list = Bart::Station::LIST
   haml :index
 end
 
