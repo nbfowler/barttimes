@@ -1,21 +1,25 @@
-!!! 5
-%head
-  %title BART Times
+%h1
+  = @station.name
+%table
+  %thead
+    %tr
+      %th Destination
+      %th Estimates
+  %tbody
+    - @station.load_departures
+    - unless @station.departures.empty?
+      - @station.departures.map do |d|
+        %tr
+          %td
+            = d.destination.name
+          %td
+            - d.estimates.map do |e|
+              = e.minutes 
+          -#  %span{ :style => 'margin-left:100px;' } 
+    - else 
+      %tr
+        %td
+          No current prediction
 
-%body
-  %h1
-    = @station.name
-  %ul
-  - @station.load_departures
-  - unless @station.departures.empty?
-    - @station.departures.map do |d|
-      %li 
-        = d.destination.name
-        %span{ :style => 'margin-left:100px;' } 
-        - d.estimates.map do |e|
-          = e.minutes 
-  - else 
-    %p No current prediction
-
-  %h4
-    %a{ :href => '/' } Home
+%h4
+  %a{ :href => '/' } Home

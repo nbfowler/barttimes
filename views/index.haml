@@ -1,12 +1,17 @@
-!!! 5
-%head
-  %title BART Times
-
-%body
-  %h1 Check out these BART stations!!
-  %ul
-  - Bart::Station::LIST.each do |station_hash|
-    %li
-      %a{:href => "/station/" + station_hash[:id] } 
-        = station_hash[:name]
-
+%div{:"data-role" => 'page'}
+  %div{:"data-role" => 'header'}
+    %h1{:role => 'heading'}BART stations
+    %a{:"data-rel" => 'dialog', :href => '#about', :"data-transition" => 'slidedown'} About
+  %div{:"data-role" => 'content'}
+    %ul{ :"data-role" => 'listview', :"data-theme" => 'e' }
+      - Bart::Station::LIST.each do |station_hash|
+        %li
+          %a{:href => "/station/" + station_hash[:id] } 
+            = station_hash[:name]
+  %div{:"data-role" => 'footer'}
+%div{:"data-role" => 'page', :id => 'about'}
+  %div{:"data-role" => 'header'}
+    %h1 About
+    %a{:"data-icon" => 'delete'}
+  %div{:"data-role" => 'content'}
+    This is a product of Nicholas Fowler, HAML newbie and Ruby fan-l.
