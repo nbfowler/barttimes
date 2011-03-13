@@ -1,10 +1,11 @@
 require 'rubygems'
-require 'sinatra'
 require 'environment'
+require 'bart/station'
+require 'sinatra'
 require 'awesome_print'
 
 get '/' do
-  #  station_list = Bart::Station::LIST
+  #  @station_list = Bart::Station::LIST
   haml :index
 end
 

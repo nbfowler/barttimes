@@ -1,4 +1,3 @@
-
 module Bart
   class Station
 
