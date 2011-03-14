@@ -1,25 +1,25 @@
-%h1
-  = @station.name
-%table
-  %thead
-    %tr
-      %th Destination
-      %th Estimates
-  %tbody
-    - @station.load_departures
-    - unless @station.departures.empty?
-      - @station.departures.map do |d|
+%div{:"data-role" => 'page'}
+  %div{:"data-role" => 'header'}
+    %h1{:role => 'heading'}
+      = @station.name
+    %a{ :href => '/' } Home
+  %div{:"data-role" => 'content'}
+    %table
+      %thead
         %tr
-          %td
-            = d.destination.name
-          %td
-            - d.estimates.map do |e|
-              = e.minutes 
-          -#  %span{ :style => 'margin-left:100px;' } 
-    - else 
-      %tr
-        %td
-          No current prediction
-
-%h4
-  %a{ :href => '/' } Home
+          %th Destination
+          %th Estimates
+      %tbody
+        - @station.load_departures
+        - unless @station.departures.empty?
+          - @station.departures.map do |d|
+            %tr
+              %td
+                = d.destination.name
+              %td
+                - d.estimates.map do |e|
+                  = e.minutes 
+        - else 
+          %tr
+            %td
+              No current prediction
