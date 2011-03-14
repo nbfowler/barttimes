@@ -10,9 +10,8 @@
         - @station.departures.map do |d|
           %li{:"data-role" => 'list-divider'}
             = d.destination.name
-            %ul
             - d.estimates.map do |e|
               %li{:"data-theme" => 'c'}
-                = e.minutes 
+                = e.minutes
       - else 
         %li No current prediction
