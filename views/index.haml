@@ -6,7 +6,8 @@
     %ul{ :"data-role" => 'listview', :"data-theme" => 'b', :"data-inset" => 'true', :"data-filter" => 'true' }
       - Bart::Station::LIST.each do |station_hash|
         %li
-          %a{:"data-rel" => 'dialog', :href => "/station/" + station_hash[:id], :"data-transition" => 'pop'} 
+          -#  %a{:"data-rel" => 'dialog', :href => "/station/" + station_hash[:id], :"data-transition" => 'pop'} 
+          %a{:href => "/station/" + station_hash[:id], :"data-transition" => 'pop'} 
             = station_hash[:name]
   %div{:"data-role" => 'footer'}
 %div{:"data-role" => 'page', :id => 'about'}
