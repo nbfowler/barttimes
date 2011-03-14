@@ -3,23 +3,16 @@
     %h1{:role => 'heading'}
       = @station.name
     %a{ :href => '/' } Home
-  %div{:"data-role" => 'content', :"data-theme" => 'b' }
-    %table
-      %thead
-        %tr
-          %th Destination
-          %th Estimates
-      %tbody
-        - @station.load_departures
-        - unless @station.departures.empty?
-          - @station.departures.map do |d|
-            %tr
-              %td
-                = d.destination.name
-              %td
-                - d.estimates.map do |e|
-                  = e.minutes 
-        - else 
-          %tr
-            %td
-              No current prediction
+  %div{:"data-role" => 'content'}
+    %ul{:"data-role" => 'listview', :"data-theme" => 'b', :"data-inset" => 'true'}
+      - @station.load_departures
+      - unless @station.departures.empty?
+        - @station.departures.map do |d|
+          %li{:"data-role" => 'list-divider'}
+            = d.destination.name
+            %ul
+            - d.estimates.map do |e|
+              %li{:"data-theme" => 'c'}
+                = e.minutes 
+      - else 
+        %li No current prediction
