@@ -15,8 +15,10 @@ module Bart
     end
 
     def zero_means_arriving(minutes)
-      if minutes == '0'
-        minutes = 'Arriving'
+      if minutes != '0'
+        minutes = minutes + ' min'
+      else 
+        minutes = 'Llegando'
       end
       minutes
     end
