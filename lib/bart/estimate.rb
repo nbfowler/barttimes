@@ -8,10 +8,17 @@ module Bart
     def initialize(xml)
       document = Nokogiri::XML.parse(xml)
 
-      @minutes   = document.css('minutes').text.to_i
+      @minutes   = document.css('minutes').text
       @platform  = document.css('platform').text.to_i
       @direction = document.css('direction').text
       @length    = document.css('length').text.to_i
+    end
+
+    def zero_means_arriving(minutes)
+      if minutes == '0'
+        minutes = 'Arriving'
+      end
+      minutes
     end
 
     def seconds
