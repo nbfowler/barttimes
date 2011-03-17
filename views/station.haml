@@ -12,6 +12,10 @@
             = d.destination.name
             - d.estimates.map do |e|
               %li{:"data-theme" => 'c'}
-                = e.zero_means_arriving(e.minutes) + ' :: ' + e.length.to_s + ' car train'
+                %span{:style => 'width: 55px;float:left; text-align:center;'}
+                  = e.minutes.to_s + ' min'
+                %span{:style => 'float:left;'}:
+                %span{:style => 'width: 75px;float:left; text-align:center;'}
+                  = e.length.to_s + ' cars'
       - else 
         %li No current prediction
