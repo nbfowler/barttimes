@@ -6,7 +6,11 @@
     %script{ :src => '/jquery-1.5.min.js' }
     %script{ :src => '/barttimes.js' }
     %script{ :src => '/jquery.mobile-1.0a3.min.js' }
+    :javascript
+      function timedRefresh(timeoutPeriod) {
+        setTimeout("location.reload(true);",timeoutPeriod);
+        }
 
-  %body
-    = yield
+
+  = yield
 
