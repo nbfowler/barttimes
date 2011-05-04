@@ -1,22 +1,17 @@
-%body{:onload => 'JavaScript:timedRefresh(30000);'}
-  %div{:"data-role" => 'page'}
-    %div{:"data-role" => 'header', :"data-theme" => 'b' }
-      %h1{:role => 'heading'}
-        = @station.name
-      %a{ :href => '/' } Home
-    %div{:"data-role" => 'content'}
-      %ul{:"data-role" => 'listview', :"data-theme" => 'b', :"data-inset" => 'true'}
-        - @station.load_departures
-        - unless @station.departures.empty?
-          - @station.departures.map do |d|
-            %li{:"data-role" => 'list-divider'}
-              = d.destination.name
-              - d.estimates.map do |e|
-                %li{:"data-theme" => 'c'}
-                  %span{:style => 'width: 65px;float:left; text-align:center;'}
-                    = e.minutes.to_s + ' min'
-                  %span{:style => 'float:left;'}:
-                  %span{:style => 'width: 75px;float:left; text-align:center;'}
-                    = e.length.to_s + ' cars'
-        - else 
-          %li No current prediction
+%div{:"data-role" => 'page'}
+  %div{:"data-role" => 'header', :"data-theme" => 'b' }
+    %h1{:role => 'heading'}
+      = @station.name
+    %a{ :href => '/' } Home
+  %div{:"data-role" => 'content'}
+    %ul{:"data-role" => 'listview', :"data-theme" => 'b', :"data-inset" => 'true'}
+      - @station.load_departures
+      - unless @station.departures.empty?
+        - @station.departures.map do |d|
+          %li{:"data-role" => 'list-divider'}
+            = d.destination.name
+            - d.estimates.map do |e|
+              %li{:"data-theme" => 'c'}
+                = e.zero_means_arriving(e.minutes) + ' :: ' + e.length.to_s + ' car train'
+      - else 
+        %li No current prediction
