@@ -8,20 +8,15 @@ module Bart
     def initialize(xml)
       document = Nokogiri::XML.parse(xml)
 
-      @minutes   = document.css('minutes').text.to_i 
+      @minutes   = document.css('minutes').text
       @platform  = document.css('platform').text.to_i
       @direction = document.css('direction').text
       @length    = document.css('length').text.to_i
     end
 
     def zero_means_arriving(minutes)
-      minutes
-    end
-
-    def add_min(minutes)
-      minutes = minutes.to_s
-      if minutes.match =~ /\d+/
-        minutes += ' min '
+      if minutes != 'Arrived'
+        minutes = minutes + ' min'
       end
       minutes
     end

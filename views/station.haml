@@ -2,7 +2,7 @@
   %div{:"data-role" => 'header', :"data-theme" => 'b' }
     %h1{:role => 'heading'}
       = @station.name
-    %a{ :href => '/' } Home
+    %a{ :href => '/', :rel => 'external' } Home
   %div{:"data-role" => 'content'}
     %ul{:"data-role" => 'listview', :"data-theme" => 'b', :"data-inset" => 'true'}
       - @station.load_departures
