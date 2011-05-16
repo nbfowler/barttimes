@@ -2,14 +2,25 @@
 %html
   %head
     %title BART Times
-    %link{ :rel => 'stylesheet', :href => '/jquery.mobile-1.0a3.css', :type => 'text/css' }
-    %script{ :src => '/jquery-1.5.min.js' }
-    %script{ :src => '/barttimes.js' }
-    %script{ :src => '/jquery.mobile-1.0a3.min.js' }
+    %script{ :src => './jquery-1.5.min.js' }
+    %script{ :src => './barttimes.js' }
+    %script{ :src => './jquery.mobile-1.0a4.1.min.js' }
+    %link{ :rel => 'stylesheet', :href => '/jquery.mobile-1.0a4.1.min.css', :type => 'text/css' }
+
     :javascript
       function timedRefresh(timeoutPeriod) {
         setTimeout("location.reload(true);",timeoutPeriod);
         }
+    :javascript
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-23358911-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
 
 
   = yield

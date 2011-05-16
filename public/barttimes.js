@@ -1,3 +1,3 @@
-// $(document).bind("mobileinit", function(){
-      // apply overrides here
-// });
+$(document).bind("mobileinit", function(){
+    $.mobile.listview.prototype.options.filterPlaceholder = 'Enter station name';
+});
