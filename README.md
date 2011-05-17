@@ -1,7 +1,11 @@
 
-A ruby wrapper around the BART API. [http://api.bart.gov/](http://api.bart.gov/)
+A simple mobile web app using jish's ruby wrapper [http://github.com/jish/bart](http://github.com/jish/bart) around the BART API. [http://api.bart.gov/](http://api.bart.gov/)
 
-## Usage
+##Mobile app URL
+
+[http://barttimes.com](http://barttimes.com)
+
+## Ruby Wrapper Usage
 
 Create a new station object
 
