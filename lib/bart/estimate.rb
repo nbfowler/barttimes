@@ -15,7 +15,7 @@ module Bart
     end
 
     def zero_means_arriving(minutes)
-      if minutes != 'Arrived'
+      if minutes =~ /\d+/
         minutes = minutes + ' min'
       end
       minutes
