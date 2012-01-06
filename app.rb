@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'sinatra'
-require 'environment'
+require './environment'
 require 'bart/station'
 
 get '/' do
