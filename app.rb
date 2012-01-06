@@ -2,7 +2,6 @@ require 'rubygems'
 require 'sinatra'
 require 'environment'
 require 'bart/station'
-require 'awesome_print'
 
 get '/' do
   haml :index
