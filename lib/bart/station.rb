@@ -49,15 +49,16 @@ module Bart
       params = {
         :cmd => 'etd',
         :orig => @abbr,
-        :key => 'MW9S-E7SL-26DU-VV8V'
+        :key => 'MZHM-BLID-IBJ5-95DS'
       }
 
       query_string = '?' + params.map { |key, value| [key, value] * '=' } * '&'
-      ssan_etd = Net::HTTP::Get.new('/api/etd.aspx' + query_string )
 
-      response = Net::HTTP.start('api.bart.gov') do |http|
-        http.request(ssan_etd)
-      end
+      host = 'http://api.bart.gov'
+
+      path_query_str = '/api/etd.aspx' + query_string
+
+      response = fetch(host, path_query_str)
 
       store_departures(response.body)
     end
@@ -82,5 +83,16 @@ module Bart
       
     end
 
+    protected
+
+      def fetch(host, path_query_str, limit = 10)
+        response = Net::HTTP.get_response(URI.parse(host + path_query_str))
+        case response
+        when Net::HTTPSuccess     then response
+        when Net::HTTPRedirection then fetch(host, response['location'], limit - 1)
+        else
+          response.error!
+        end
+      end
   end
 end
