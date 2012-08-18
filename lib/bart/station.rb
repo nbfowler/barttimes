@@ -71,6 +71,10 @@ module Bart
       end
     end
 
+    def departures_by_platform
+      @departures.sort_by { |d| d.estimates.first.platform }
+    end
+
     def load_stninfo
       params = {
         :cmd => 'stninfo',

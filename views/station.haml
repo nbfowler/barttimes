@@ -7,7 +7,7 @@
     %ul{:"data-role" => 'listview', :"data-theme" => 'b', :"data-inset" => 'true'}
       - @station.load_departures
       - unless @station.departures.empty?
-        - @station.departures.map do |d|
+        - @station.departures_by_platform.map do |d|
           %li{:"data-role" => 'list-divider'}
             = d.destination.name
             - d.estimates.map do |e|
