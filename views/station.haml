@@ -4,11 +4,18 @@
       = @station.name
     %a{ :href => '/', :rel => 'external' } Home
   %div{:"data-role" => 'content'}
-    %ul{:"data-role" => 'listview', :"data-theme" => 'b', :"data-inset" => 'true'}
+    %ul{:"data-role" => 'listview', :"data-divider-theme" => 'a', :"data-inset" => 'true'}
       - @station.load_departures
       - unless @station.departures.empty?
+        - platform = 0
         - @station.departures_by_platform.map do |d|
-          %li{:"data-role" => 'list-divider'}
+          - if d.estimates.first.platform == platform + 1
+            - platform = d.estimates.first.platform
+            %li{:"data-role" => 'list-divider', :"data-theme" => 'a'}
+              = "Platform #{platform}"
+          -# adding class "ui-bar-b" as hacky way to achieve two different
+          -# divider styles
+          %li{:"data-role" => 'list-divider', :class => "ui-bar-b"}
             = d.destination.name
             - d.estimates.map do |e|
               %li{:"data-theme" => 'c'}
