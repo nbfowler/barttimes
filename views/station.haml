@@ -4,7 +4,7 @@
       = @station.name
     %a{ :href => '/', :rel => 'external' } Home
   %div{:"data-role" => 'content'}
-    %ul{:"data-role" => 'listview', :"data-divider-theme" => 'a', :"data-inset" => 'true'}
+    %ul{:"data-role" => 'listview', :"data-divider-theme" => 'a'}
       - @station.load_departures
       - unless @station.departures.empty?
         - platform = 0
