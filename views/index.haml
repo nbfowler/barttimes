@@ -4,7 +4,7 @@
       %h1{:role => 'heading'}BARTtimes.com
       %a{:"data-rel" => 'dialog', :href => '#about', :"data-transition" => 'slidedown'} About
     %div{:"data-role" => 'content'}
-      %ul{ :"data-role" => 'listview', :"data-theme" => 'b', :"data-inset" => 'true', :"data-filter" => 'true'}
+      %ul{ :"data-role" => 'listview', :"data-theme" => 'b', :"data-filter" => 'true'}
         - Bart::Station::LIST.each do |station_hash|
           %li
             %a{:href => "/station/" + station_hash[:id], :rel => 'external'} 
