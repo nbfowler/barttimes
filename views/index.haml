@@ -2,7 +2,7 @@
   %div{:"data-role" => 'page'}
     %div{:"data-role" => 'header', :"data-theme" => 'b'}
       %h1{:role => 'heading'}BARTtimes.com
-      %a{:"data-rel" => 'dialog', :href => '#about', :"data-transition" => 'slidedown'} About
+      %a{:"data-rel" => 'dialog', :href => '#about', :"data-transition" => 'slidedown', :"data-icon" => 'info', :"data-iconpos" => "notext"}
     %div{:"data-role" => 'content'}
       %ul{ :"data-role" => 'listview', :"data-theme" => 'b', :"data-filter" => 'true'}
         - Bart::Station::LIST.each do |station_hash|
